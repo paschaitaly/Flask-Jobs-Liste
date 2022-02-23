@@ -78,7 +78,7 @@ def firma_page():
 def beruf_page():
     items = Item.query.order_by(Item.beruf.asc()).all()
     totalerows = len(items)
-    return render_template('Jobliste.html', items=items ,totalerows=totalerows, ordine='Beruf', ort='Villach', databasearray=databasevillach, linkvillach=linkvillach, nomevillach=nomevillach, htmlberuf=htmlberuf, htmlfirma=htmlfirma)
+    return render_template('Jobliste.html', filetime=filetime, items=items ,totalerows=totalerows, ordine='Beruf', ort='Villach', databasearray=databasevillach, linkvillach=linkvillach, nomevillach=nomevillach, htmlberuf=htmlberuf, htmlfirma=htmlfirma)
 
 @app.route('/FirmaVillach/<beruf>', methods=['GET', 'POST'])
 def firma_page_beruf(beruf):
@@ -124,7 +124,7 @@ def firma_page_beruf1(beruf):
 def beruf_page1():
     items1 = Item1.query.order_by(Item1.beruf.asc()).all()
     totalerows = len(items1)
-    return render_template('Jobliste1.html', filetime=filetime, items1=items1 ,totalerows=totalerows, ordine='Beruf', ort='Klagenfurt', databasearray1=databaseklagenfurt, linkklagenfurt=linkklagenfurt, nomeklagenfurt=nomeklagenfurt, htmlberuf=htmlberuf, htmlfirma=htmlfirma)
+    return render_template('Jobliste1.html', filetime=filetime, filetime=filetime, items1=items1 ,totalerows=totalerows, ordine='Beruf', ort='Klagenfurt', databasearray1=databaseklagenfurt, linkklagenfurt=linkklagenfurt, nomeklagenfurt=nomeklagenfurt, htmlberuf=htmlberuf, htmlfirma=htmlfirma)
 
 @app.route('/BerufKlagenfurt/<beruf>', methods=['GET', 'POST'])
 def beruf_page_beruf1(beruf):
