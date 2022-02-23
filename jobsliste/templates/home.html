@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block title %} Welcome to Lucio Jobsliste {% endblock %} {% block content %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark" style="color:white">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">Lucio Panasci</h1>
+        <p class="lead font-weight-normal">Jobs Angebote {{ filetime }}</p>
+        <a class="btn btn-primary" href="{{ url_for('beruf_page') }}">Villach</a>
+        <a class="btn btn-primary" href="{{ url_for('beruf_page1') }}">Klagenfurt</a>
+    </div>
+    <a style="text-align: center" class="form-text" href="http://www.luciopanasci.it">www.luciopanasci.it</a> {% endblock %}
+
+
+</div>

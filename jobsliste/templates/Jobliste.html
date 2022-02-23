@@ -1,0 +1,134 @@
+{% extends 'base.html' %} {% block title %} Jobs Liste {{ ort }} {{ filetime }} {% endblock %} {% block content %}
+<style>
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        background-color: green;
+    }
+    
+    #customers td,
+    #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+        color: black;
+    }
+    
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    a:link {
+        text-decoration: none;
+    }
+</style>
+<div align="center" class="btn-group-lg" role="group">
+    {% for archivio in databasearray %}
+    <button class="btn btn-outline-light btn-dark"><a href="{{ linkvillach[loop.index-1 ] }}">
+        
+        
+        {{archivio}}</a></button>{% endfor %}
+</div>
+
+<h1 align="center" style="background-color: white;color: black;">{{ ort }} Liste nach {{ ordine }} ({{ totalerows }}{{ purchase_form }})</h1>
+<div class="row" style="margin-top:20px; margin-left:20px">
+    <div class="col-10">
+
+
+        <table id="customers">
+            <thead>
+                <tr>
+
+                    <!-- Your Columns HERE -->
+                    <th scope="col">Nr.</th>
+                    <th scope="col">
+                        Beruf
+                        <a href="{{ url_for('beruf_page') }}"> <i style='font-size:18px;color: black' class='fa fa-sort'></i>
+                        </a>
+                        <form action="{{ url_for('ricerca_page_beruf') }}" method="post">
+                            <input type="text" name="beruf" placeholder="Villach, Search..." />
+                        </form>
+
+                    </th>
+                    <th scope="col">Firma
+                        <a href="{{ url_for('firma_page') }}"> <i style='font-size:18px;color: black' class='fa fa-sort'></i>
+                        </a>
+                        <form action="{{ url_for('ricerca_page_firma') }}" method="post">
+                            <input type="text" name="firma" placeholder="Villach, Search..." />
+                        </form>
+                    </th>
+                    <th scope="col">Ort</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                {% for item in items %}
+                <tr>
+                    <td> {{ loop.index }}
+                    </td>
+                    <td>{{item.beruf}}
+                        <a href="{{item.link}}" target="_blank"> <i style='font-size:18px;color: black' class='fa fa-info-circle'></i></a>
+                    </td>
+                    <td>{{ item.firma }}</td>
+                    <td>{{ item.ort }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-2" align="center" style="position: fixed; right: 0px;">
+        <div class="btn-group-vertical">
+            <h4>Schnell suchen...</h4>
+            <button class="btn btn-outline-light btn-dark"><a href="{{ url_for('beruf_page') }}"> <i style='font-size:18px;color: rgb(103, 173, 12)' class="fa fa-home"> Home</i></a></button>
+            <button class="btn btn-outline-light btn-dark"><a href="{{ url_for('beruf_page') }}/Verwaltung"> Verwaltung...</a></button>
+            <button class="btn btn-outline-light btn-dark"><a href="{{ url_for('beruf_page') }}/Front"> Front...</a></button>
+            <button class="btn btn-outline-light btn-dark"><a href="{{ url_for('beruf_page') }}/Back"> Back...</a></button>
+            <button class="btn btn-outline-light btn-dark"><a href="{{ url_for('beruf_page') }}/Web"> Web...</a></button>
+            <button class="btn btn-outline-light btn-dark"><a href="{{ url_for('beruf_page') }}/Kellner"> Kellner...</a></button>
+            <button class="btn btn-outline-light btn-dark"><a href="{{ url_for('beruf_page') }}/Servicemit"> Servicemit...</a></button>
+            <!----
+            <br>
+            <h4>Alte Jobs Liste</h4>
+            <h5>Villach mit Klagenfurt</h5>
+            <div class="btn-group-vertical">
+
+                <div class="btn-group" role="group">
+                    <button id="Beruf" type="button" class="btn btn-secondary dropdown-toggle btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Liste nach Beruf
+                    </button>
+                    <div class="dropdown-menu">
+                        {% for archivio in htmlberuf %}
+                        <a class="dropdown-item" href="https://www.luciopanasci.it/1Programmare/1%20Selenium/JobAngebote/{{ archivio}}">{{ archivio}}</a>{% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="btn-group-vertical">
+
+                <div class="btn-group" role="group">
+                    <button id="Firma" type="button" class="btn btn-secondary dropdown-toggle btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Liste nach Firma
+                    </button>
+                    <div class="dropdown-menu">
+                        {% for archivio in htmlfirma %}
+                        <a class="dropdown-item" href="https://www.luciopanasci.it/1Programmare/1%20Selenium/JobAngebote/{{ archivio}}">{{ archivio}}</a>{% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    ------>
+        </div>
+    </div>
+
+    {% endblock %}
